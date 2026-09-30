@@ -1,0 +1,48 @@
+# Workflow tomado de matcom/thesis y adaptado a acciones actuales.
+# Compila document/Thesis.tex en cada push y publica el PDF.
+name: Build & Deploy
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: latex-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+
+      - name: LaTeX compilation
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: Thesis.tex
+          working_directory: document
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: thesis-pdf
+          path: document/Thesis.pdf
+          if-no-files-found: error
+
+      - name: Prepare for Deploy
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          mkdir -p build
+          cp document/Thesis.pdf build/document.pdf
+
+      - name: Deploy
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build
