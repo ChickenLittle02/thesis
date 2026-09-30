@@ -1,0 +1,31 @@
+document/
+├── BackMatter
+│   ├── Bibliography.tex
+│   ├── Conclusions.tex
+│   └── Recomendations.tex
+├── Bibliography.bib
+├── FrontMatter
+│   ├── Abstract.tex
+│   ├── Contents.tex
+│   ├── Dedication.tex
+│   ├── SupervisorOpinion.tex
+│   └── Thanks.tex
+├── Graphics
+│   ├── uhlogo.pdf
+│   └── uhlogo.svg
+├── MainMatter
+│   ├── Background.tex
+│   ├── Implementation.tex
+│   ├── Introduction.tex
+│   └── Proposal.tex
+├── Thesis.lol
+├── Thesis.tex
+├── arbol_depth3.txt
+├── babplain-uh.bst
+├── generar_arbol.py
+├── latexmkrc
+├── make.bat
+├── make.sh
+├── make_logo.bat
+├── make_logo.sh
+└── uhthesis.cls

@@ -1,2 +1,19 @@
 \chapter*{Introducción}\label{chapter:introduction}
 \addcontentsline{toc}{chapter}{Introducción}
+
+A continuación, presento una propuesta para la Introducción de tu tesis, estructurada bajo el modelo tradicional de MATCOM, que integra el contexto institucional, la brecha tecnológica y el desglose técnico del problema.
+1. Introducción
+1.1. Situación Existente
+Actualmente, diversas instituciones patrimoniales cubanas, como la Biblioteca Nacional José Martí (BNJM), el Instituto de Historia de Cuba (IHC) y la Biblioteca Central de la Universidad de Habana (BCUH), custodian un volumen masivo de información histórica contenida en fichas catalográficas. Se estima que existen varios cientos de miles de fichas digitalizadas que se encuentran en un estado de "solo imagen".
+Esta situación genera un vacío crítico de metadatos: aunque las imágenes existen, su contenido no es procesable por máquinas ni puede ser indexado en Sistemas de Gestión de Bibliotecas (SGB) modernos como Omeka-S o Koha. Las colecciones digitales, conocidas como CIPACs (Card Image Public Access Catalogs), carecen de interoperabilidad semántica, lo que limita drásticamente la recuperación de información y el acceso de investigadores a los fondos bibliográficos nacionales.
+1.2. Problema Central de la Tesis
+El problema fundamental de esta investigación radica en la ineficiencia y alta fricción técnica para transformar colecciones masivas de imágenes de fichas catalográficas en registros bibliográficos normalizados.
+La complejidad del problema se incrementa por la alta variabilidad física de los materiales originales, que incluyen desde fichas mecanografiadas con ruido visual hasta fichas manuscritas con caligrafía irregular y tachaduras. La tesis busca resolver cómo integrar tecnologías de Ciencias de la Computación (ETL, OCR, NLP) con los estándares de Ciencias de la Información (MARC21, RDA) para automatizar este flujo de trabajo de forma masiva y precisa.
+1.3. Subproblemas de la Investigación
+Para abordar el problema central, la investigación se divide en los siguientes subproblemas técnicos y metodológicos:
+
+    Reconocimiento y Captura de Texto (OCR/HTR): El reto inicial es lograr una transcripción literal fiel al documento original. Esto implica ajustar motores de OCR (como Tesseract) a las características de las fichas antiguas y resolver el problema del Reconocimiento de Texto Manuscrito (HTR), donde los trazos irregulares dificultan la lectura estándar.
+    Extracción Inteligente de Entidades (NLP): Una vez obtenido el texto plano ("sucio"), es necesario aplicar Reconocimiento de Entidades Nombradas (NER) para identificar componentes específicos como autor, título, editorial, fecha y signatura topográfica, superando la falta de estructura del texto extraído.
+    Normalización y Mapeo Bibliográfico: Los datos extraídos deben ser transformados en formatos estructurados (como JSON) y posteriormente mapeados a estándares internacionales de catalogación como MARC21, RDA o Bibframe, garantizando que la información sea legible por cualquier sistema bibliotecario moderno.
+    Asistencia mediante Agentes Inteligentes y RAG: La necesidad de reducir la intervención humana en el control de calidad plantea el subproblema de diseñar agentes inteligentes que puedan consultar bases de conocimiento (mediante arquitecturas RAG) para corregir errores del OCR basándose en reglas de catalogación predefinidas.
+    Evaluación de Viabilidad y Costo de Modelos de Lenguaje (LLMs): Ante la evidencia de que la IA generativa (como Gemini) puede realizar transcripciones y estructuraciones exitosas, se debe determinar si es viable económica y técnicamente el uso de estos modelos a gran escala frente a metodologías de código abierto tradicionales
